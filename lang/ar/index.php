@@ -1,0 +1,42 @@
+<?php
+
+
+return [
+
+    'title' => 'المعهد العالي للحاسبات والمعلومات وتكنولوجيا الأدارة بطنطا',
+    'someElementsLeft' => 'right',
+    'dir' => 'rtl',
+    'lfrt' => 'left',
+    'rtlf' => 'right',
+    'txtSearch' => 'بحث عن . . .',
+    'txtLang' => 'English',
+    'txtProfile' => 'بياناتي الشخصية',
+    'txtRecruitmentStatus' => 'حالة التجنيد',
+    'txtElectronicCard' => 'الكارنية الإلكترونية',
+    'txtShowResult' => 'عرض النتيجة',
+    'txtLogout' => 'تسجيل الخروج',
+    'txtStudentPortal' => 'بوابة الطالب',
+    'txtHome' => 'الصفحة الرئيسية',
+    'txtTools' => 'الأدوات',
+    'txtExams' => 'الإمتحانات',
+    'txtExam' => 'إمتحان',
+    'txtBooks' => 'الكتب',
+    'txtExercises' => 'أختبارات',
+    'txtNews' => 'الأخبار',
+    'txtHelper' => 'المساعد',
+    'txtSettings' => 'الإعدادات',
+    'txtAccountSettings' => 'إعدادات الحساب',
+    'txtAppSettings' => 'إعدادات البرنامج',
+    'txtExpand' => 'توسيع',
+    'txtCollapse' => 'تصغير',
+    'txtHelloMSG' => 'ماذا تريد أن تفعل اليوم؟',
+    'txtExamsName' => 'الإمتحانات الإلكترونية',
+    'txtTextbooks' => 'الكتب الدراسية',
+    'txtTestsAndQuizzes' => 'الإختبارات والتدريبات',
+    'txtLastNews' => 'آخر الأخبار',
+    'txtToolsHelper' => 'الأدوات المساعدة',
+    'txtComingSoon' => 'قريباً',
+    'txtMadeBy' => 'صنع بواسطة أعضاء مشروع التخرج بمعهد طنطا',
+    'txtBeta' => 'تجربي',
+
+];

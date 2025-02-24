@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Code Editor with Snippets</title>
+        <link rel="stylesheet" href="styles.css" />
+
+        <style>
+            body {
+                margin: 0;
+                font-family: "Courier New", Courier, monospace;
+                background-color: #1e1e1e;
+                color: #d4d4d4;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                height: 100vh;
+            }
+
+            .header {
+                display: flex;
+                justify-content: space-between;
+                width: 80%;
+                padding: 10px;
+                background-color: #252526;
+                color: #d4d4d4;
+                font-size: 16px;
+                border-bottom: 1px solid #3c3c3c;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            }
+
+            .header .title {
+                font-weight: bold;
+            }
+
+            .header .help {
+                font-style: italic;
+            }
+
+            .editor-container {
+                display: flex;
+                width: 80%;
+                height: 80%;
+                border: 1px solid #3c3c3c;
+                background-color: #1e1e1e;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            }
+
+            .line-numbers {
+                background-color: #252526;
+                color: #858585;
+                padding: 10px;
+                text-align: right;
+                user-select: none;
+                overflow: hidden;
+            }
+
+            .line-numbers div {
+                line-height: 20px;
+            }
+
+            .code-editor {
+                flex: 1;
+                border: none;
+                background: transparent;
+                color: #d4d4d4;
+                padding: 10px;
+                font-size: 14px;
+                line-height: 20px;
+                resize: none;
+                outline: none;
+                caret-color: #ffffff;
+                overflow: auto;
+            }
+
+            .snippets-container {
+                background-color: #252526;
+                width: 30%;
+                padding: 10px;
+                overflow-y: auto;
+                color: #d4d4d4;
+            }
+
+            .snippet {
+                background-color: #1e1e1e;
+                margin-bottom: 10px;
+                padding: 10px;
+                border: 1px solid #3c3c3c;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background 0.3s;
+            }
+
+            .snippet:hover {
+                background-color: #3c3c3c;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <div class="title">محرر أكواد</div>
+            <div class="help">مساعدة في كتابة الأكواد</div>
+        </div>
+        <div class="editor-container">
+            <div class="line-numbers" id="lineNumbers"></div>
+            <textarea
+                class="code-editor"
+                id="codeEditor"
+                spellcheck="false"
+            ></textarea>
+            <div class="snippets-container" id="snippetsContainer">
+                <div class="snippet">console.log("Hello, World!");</div>
+                <div class="snippet">
+                    if (x > y) { console.log("X is greater"); }
+                </div>
+                <div class="snippet">
+                    for (let i = 0; i < 10; i++) { console.log(i); }
+                </div>
+                <div class="snippet">
+                    function greet(name) { return `Hello, ${name}`; }
+                </div>
+                <div class="snippet">// Incorrect code: Missing semicolon</div>
+                <div class="snippet">let x = 5 let y = 10;</div>
+                <div class="snippet">
+                    document.querySelector("button") .addEventListener ("click",
+                    () => alert("Clicked!"));
+                </div>
+            </div>
+        </div>
+        <script>
+            const codeEditor = document.getElementById("codeEditor");
+            const lineNumbers = document.getElementById("lineNumbers");
+            const snippetsContainer =
+                document.getElementById("snippetsContainer");
+
+            function updateLineNumbers() {
+                const lines = codeEditor.value.split("\n").length;
+
+                if (lines > 999) {
+                    const trimmedValue = codeEditor.value
+                        .split("\n")
+                        .slice(0, 999)
+                        .join("\n");
+                    codeEditor.value = trimmedValue;
+                }
+
+                lineNumbers.innerHTML = "";
+                const currentLines = codeEditor.value.split("\n").length;
+                for (let i = 1; i <= currentLines; i++) {
+                    const lineNumber = document.createElement("div");
+                    lineNumber.textContent = i;
+                    lineNumbers.appendChild(lineNumber);
+                }
+            }
+
+            // Update line numbers on input or scroll
+            codeEditor.addEventListener("input", updateLineNumbers);
+            codeEditor.addEventListener("scroll", () => {
+                lineNumbers.scrollTop = codeEditor.scrollTop;
+            });
+
+            // Add snippet to editor at cursor position on click
+            snippetsContainer.addEventListener("click", (event) => {
+                if (event.target.classList.contains("snippet")) {
+                    const snippetText = event.target.textContent.trim(); // إزالة الأسطر الزائدة
+
+                    // Get cursor position
+                    const start = codeEditor.selectionStart;
+                    const end = codeEditor.selectionEnd;
+
+                    // Insert snippet at cursor position
+                    const before = codeEditor.value.slice(0, start);
+                    const after = codeEditor.value.slice(end);
+
+                    codeEditor.value = before + snippetText + after;
+
+                    // Set cursor position to end of inserted snippet
+                    const newCursorPos = start + snippetText.length;
+                    codeEditor.setSelectionRange(newCursorPos, newCursorPos);
+
+                    // Focus back to editor
+                    codeEditor.focus();
+
+                    updateLineNumbers();
+                }
+            });
+
+            // Set focus to code editor and cursor to the start
+            window.addEventListener("load", () => {
+                codeEditor.focus();
+                codeEditor.setSelectionRange(0, 0);
+            });
+
+            // Initialize line numbers
+            updateLineNumbers();
+        </script>
+    </body>
+</html>

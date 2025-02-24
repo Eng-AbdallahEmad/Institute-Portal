@@ -1,0 +1,553 @@
+/* Import Google font - Alexandria */
+@import url("https://fonts.googleapis.com/css2?family=Alexandria:wght@100;200;300;400;500;600;700;800;900&display=swap");
+body {
+    font-family: "Alexandria", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    --sb-track-color: #ffffff00;
+    --sb-thumb-color: #811538;
+    --sb-size: 15px;
+}
+
+body::-webkit-scrollbar {
+    width: var(--sb-size);
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 10px;
+    border: 3px solid #f4f4f4;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+    body {
+        scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+    }
+}
+
+.load {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    top: 0;
+    right: 0;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    transition: opacity 0.5s;
+    opacity: 1;
+    z-index: 9999;
+}
+
+.loader {
+    height: 50px;
+    aspect-ratio: 2;
+    border: 10px solid #fff;
+    box-sizing: border-box;
+    background: radial-gradient(farthest-side, #000 98%, #ffffff00) left/20px
+            20px,
+        radial-gradient(farthest-side, #000 98%, #ffffff00) left/20px 20px,
+        radial-gradient(farthest-side, #000 98%, #ffffff00) center/20px 20px,
+        radial-gradient(farthest-side, #000 98%, #ffffff00) right/20px 20px,
+        #fff;
+    background-repeat: no-repeat;
+    filter: blur(4px) contrast(10);
+    animation: l14 1s infinite;
+}
+@keyframes l14 {
+    100% {
+        background-position: right, left, center, right;
+    }
+}
+
+.load h1 {
+    margin-top: 1.7rem;
+    font-size: 1.3rem;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    overflow-x: hidden;
+}
+
+i {
+    font-size: 1.3rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header .title-icon h1 {
+    margin: 0;
+    margin-bottom: 3rem;
+    font-size: 2em;
+}
+
+header .title-icon button {
+    outline: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+}
+
+header .title-icon button svg {
+    width: 25px;
+    height: 25px;
+    stroke: #333;
+}
+
+.groups button {
+    display: none;
+}
+
+header .groups .group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #333;
+    border-top: 2px solid #333;
+    padding: 12px;
+    margin-bottom: 15px;
+}
+
+header .group:last-child {
+    margin-bottom: 3rem;
+}
+
+header p {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 5px 0;
+    color: #474747;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.instructions {
+    margin-bottom: 20px;
+}
+
+.instructions h2 {
+    margin-bottom: 10px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 5px;
+}
+
+.instructions ul {
+    list-style-type: disc;
+    margin: 0;
+    padding-left: 20px;
+    line-height: 2.5;
+}
+
+.questions {
+    position: relative;
+    margin-top: 20px;
+}
+
+.questions .timer {
+    position: absolute;
+    left: 30px;
+    top: 3px;
+    background: #fff;
+    color: #333;
+    padding: 0 25px;
+    border: 2px solid #333;
+    border-radius: 0.5rem;
+}
+
+.questions .timer::before {
+    content: "الوقت:";
+    position: absolute;
+    top: -12px;
+    right: 5px;
+    background: #fff;
+    font-weight: 800;
+    color: #333;
+}
+
+.questions h2 {
+    margin-bottom: 10px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 5px;
+}
+
+.question {
+    margin-bottom: 20px;
+}
+
+.question h3 {
+    margin-bottom: 10px;
+}
+
+.question .options {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.question .options label {
+    cursor: pointer;
+}
+
+.options label input {
+    -webkit-appearance: none;
+}
+
+.options label .tex-q {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+label .tex-q span.rce {
+    background: #000;
+    color: #fff;
+    padding: 7px 12px;
+    font-weight: 600;
+    border: 2.5px solid #000;
+    transition: background-color 0.3s ease, color 0.3s ease,
+        border-color 0.3s ease;
+}
+
+label .tex-q span.dce {
+    padding: 7px 15px 7px 18px;
+    border: 2.5px solid #000;
+    transition: border-color 0.3s ease;
+}
+
+input[type="radio"]:checked + .tex-q span.rce {
+    background: #28a745;
+    color: #fff;
+    border: 2.5px solid #28a745;
+}
+
+input[type="radio"]:checked + .tex-q span.dce {
+    border: 2.5px solid #28a745;
+}
+
+.btn-submit button {
+    padding: 15px 30px;
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    font-family: "Alexandria", sans-serif;
+    font-weight: 800;
+    border: none;
+    color: #fff;
+    background: #811538;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    -webkit-transition: all 0.2s ease-out 0s;
+    -moz-transition: all 0.2s ease-out 0s;
+    -ms-transition: all 0.2s ease-out 0s;
+    -o-transition: all 0.2s ease-out 0s;
+    transition: all 0.2s ease-out 0s;
+}
+
+.btn-submit button:hover {
+    background: #333;
+}
+
+/* Mobile Devices (Portrait and Landscape) */
+@media only screen and (max-width: 767px) {
+    .load h1 {
+        margin-top: 1.2rem;
+        font-size: 0.8rem;
+    }
+
+    .container {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        margin-bottom: 15px;
+    }
+
+    header .title-icon {
+        padding: 0 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    header .title-icon h1 {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        font-size: 1em;
+    }
+
+    header .title-icon button {
+        display: block;
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .groups {
+        position: fixed;
+        top: 0;
+        right: 0;
+        background: #fff;
+        width: 100%;
+        height: 100vh;
+        padding: 2.5rem 0;
+        z-index: 10;
+        transform: translateY(50rem);
+        opacity: 0;
+        transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    .groups.active {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .groups button {
+        display: block;
+        position: absolute;
+        left: 15px;
+        top: 15px;
+        border: none;
+        background: none;
+        outline: none;
+        cursor: pointer;
+    }
+
+    header .groups .group {
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        border-top: none;
+        padding: 0 12px;
+        gap: 15px;
+    }
+
+    header .group:last-child {
+        margin-bottom: 0rem;
+        border-bottom: none;
+    }
+
+    .instructions h2 {
+        padding-right: 10px;
+        font-size: 1.2rem;
+    }
+
+    .instructions ul {
+        margin: 0;
+        padding-left: 15px;
+        font-size: 0.6rem;
+    }
+
+    .questions .timer {
+        padding: 0 15px;
+        font-size: 12px;
+    }
+
+    .questions .timer::before {
+        top: -11px;
+    }
+
+    .questions h2 {
+        margin-bottom: 7px;
+        padding-right: 10px;
+        font-size: 1.2rem;
+    }
+
+    .question {
+        padding-right: 15px;
+    }
+
+    .question h3 {
+        font-size: 1rem;
+    }
+
+    .question p {
+        font-size: 0.9rem;
+    }
+
+    .question .options {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .options label .tex-q {
+        font-size: 10px;
+    }
+
+    .btn-submit button {
+        padding: 15px 25px;
+        font-size: 1rem;
+        font-weight: 700;
+        margin-right: 0.9rem;
+        margin-bottom: 0.9rem;
+    }
+}
+
+/* Tablet Devices (Portrait and Landscape) */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .container {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    header .title-icon {
+        padding: 0 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    header .title-icon h1 {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        font-size: 1.7rem;
+    }
+
+    header .title-icon button {
+        display: block;
+        visibility: visible;
+        opacity: 1;
+    }
+
+    header .title-icon button svg {
+        width: 30px;
+        height: 30px;
+    }
+
+    .groups {
+        position: fixed;
+        top: 0;
+        right: 0;
+        background: #fff;
+        width: 100%;
+        height: 100vh;
+        padding: 2.5rem 0;
+        z-index: 10;
+        transform: translateY(50rem);
+        opacity: 0;
+        transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    .groups.active {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .groups button {
+        display: block;
+        position: absolute;
+        left: 15px;
+        top: 15px;
+        border: none;
+        background: none;
+        outline: none;
+        cursor: pointer;
+    }
+
+    .groups button svg {
+        width: 30px;
+        height: 30px;
+    }
+
+    header .groups .group {
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        border-top: none;
+        padding: 0 12px;
+        gap: 15px;
+    }
+
+    header .group:last-child {
+        margin-bottom: 0rem;
+        border-bottom: none;
+    }
+
+    .instructions h2 {
+        padding-right: 10px;
+        font-size: 1.5rem;
+    }
+
+    .instructions ul {
+        margin: 0;
+        padding-left: 15px;
+        font-size: 1.1rem;
+    }
+
+    .questions .timer {
+        padding: 0 30px;
+        font-size: 20px;
+    }
+
+    .questions .timer::before {
+        top: -14px;
+    }
+
+    .questions h2 {
+        margin-bottom: 7px;
+        padding-right: 10px;
+        font-size: 1.5rem;
+    }
+
+    .question {
+        padding-right: 15px;
+    }
+
+    .question h3 {
+        font-size: 1.3rem;
+    }
+
+    .question p {
+        font-size: 1.2rem;
+    }
+
+    .question .options {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .options label .tex-q {
+        font-size: 17px;
+    }
+
+    .btn-submit button {
+        margin-right: 0.9rem;
+        margin-bottom: 0.9rem;
+    }
+}
+
+/* Laptop Devices (Portrait and Landscape) */
+@media only screen and (min-width: 1024px) and (max-width: 1439px) {
+    .container {
+        width: 960%;
+    }
+}
+
+/* Desktop Devices (Portrait and Landscape) */
+@media only screen and (min-width: 1440px) {
+    /** CSS HERE **/
+}

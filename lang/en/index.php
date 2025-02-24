@@ -1,0 +1,42 @@
+<?php
+
+
+return [
+
+    'title' => 'Higher Institute of Computers, Information and Management Technology, Tanta',
+    'someElementsLeft' => 'left',
+    'dir' => 'ltr',
+    'lfrt' => 'right',
+    'rtlf' => 'left',
+    'txtSearch' => 'Search for . . .',
+    'txtLang' => 'عربي',
+    'txtProfile' => 'My Profile',
+    'txtRecruitmentStatus' => 'Recruitment Status',
+    'txtElectronicCard' => 'Electronic Card',
+    'txtShowResult' => 'Show Result',
+    'txtLogout' => 'Logout',
+    'txtStudentPortal' => 'Student Portal',
+    'txtHome' => 'Home',
+    'txtTools' => 'Tools',
+    'txtExams' => 'Exams',
+    'txtExam' => 'Exam',
+    'txtBooks' => 'Books',
+    'txtExercises' => 'Exercises',
+    'txtNews' => 'News',
+    'txtHelper' => 'Helper',
+    'txtSettings' => 'Settings',
+    'txtAccountSettings' => 'Account Settings',
+    'txtAppSettings' => 'App Settings',
+    'txtExpand' => 'Expansion',
+    'txtCollapse' => 'Diminution',
+    'txtHelloMSG' => 'What do you want to do today?',
+    'txtExamsName' => 'e-Exams',
+    'txtTextbooks' => 'Textbooks',
+    'txtTestsAndQuizzes' => 'Tests and Quizzes',
+    'txtLastNews' => 'Last News',
+    'txtToolsHelper' => 'Helper Tools',
+    'txtComingSoon' => 'Coming Soon',
+    'txtMadeBy' => 'Made by Graduation Project Members at Tanta Institute',
+    'txtBeta' => 'Beta',
+
+];
